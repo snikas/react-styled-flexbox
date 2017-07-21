@@ -19,7 +19,8 @@
     "reactjs",
     "react-component",
     "flex",
-    "flexbox"
+    "flexbox",
+    "styled-components"
   ],
   "author": {
     "name": "Steven Akins",
