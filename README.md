@@ -11,7 +11,7 @@ npm install react-styled-flexbox --save
 import FlexContainer from 'react-styled-flexbox';
 
 <FlexContainer>
-	<div>I'm on the left!</div>
+  <div>I'm on the left!</div>
   <div>I'm on the right!</div>
 </FlexContainer>
 ```
@@ -21,12 +21,12 @@ By default FlexContainer will render a div with 'display: flex' and default flex
 If you want to add additional flexbox rules to your FlexContainer you can pass in props set to true.
 
 ```javascript
-	<FlexContainer
-		directionColumn
-	>
-		<div>I'm on the top!</div>
-    <div>I'm underneath!</div>
-	</FlexContainer>
+<FlexContainer
+	directionColumn
+>
+  <div>I'm on the top!</div>
+  <div>I'm underneath!</div>
+</FlexContainer>
 ```
 
 ### Props
