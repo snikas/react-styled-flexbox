@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/snikas/react-styled-flexbox.png?branch=master)](https://travis-ci.org/snikas/react-styled-flexbox)
+
 Effortlessly add flexbox styles to your components using minimal code.
 
 ## Basic Usage
