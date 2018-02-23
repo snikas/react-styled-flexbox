@@ -29,7 +29,7 @@ import _ from 'lodash';
 
 const getRule = (ruleName, defaultRule) => (props) => {
   const foundRule = _.find(_.keys(props), key => _.startsWith(key, ruleName));
-  if (!foundRule) {
+  if (!foundRule || !props[foundRule]) {
     return defaultRule;
   }
   const [, ...rule] = decamelize(foundRule, { separator: '-' }).split('-');
