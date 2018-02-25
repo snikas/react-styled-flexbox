@@ -6,14 +6,13 @@ Effortlessly add flexbox styles to your components using minimal code.
 
 ## Installation
 
-<div style="display: flex; justify-content: center;">
-    <div style="text-align: center;" >
-        <h3><strong>NPM</strong></h3>
-        <p style="border: 1px solid #d0d0d0; border-radius: 3px; box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.2); background-color: #eee; display: inline-block; padding: 15px 50px; font-family: monospace, sans-serif;">npm install react-styled-flexbox --save</p>
-        <h3><strong>Yarn</strong></h3>
-        <p style="border: 1px solid #d0d0d0; border-radius: 3px; box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.2); background-color: #eee; display: inline-block; padding: 15px 50px; font-family: monospace, sans-serif;">yarn add react-styled-flexbox</p>
-    </div>
-</div>
+#### NPM
+
+`npm install react-styled-flexbox --save`
+
+#### Yarn
+
+`yarn add react-styled-flexbox`
 
 ## API
 
