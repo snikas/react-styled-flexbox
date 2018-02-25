@@ -6,11 +6,11 @@ Effortlessly add flexbox styles to your components using minimal code.
 
 ## Installation
 
-#### NPM
+##### NPM
 
 `npm install react-styled-flexbox --save`
 
-#### Yarn
+##### Yarn
 
 `yarn add react-styled-flexbox`
 
@@ -25,7 +25,7 @@ import FlexContainer from 'react-styled-flexbox';
 </FlexContainer>
 ```
 
-By default FlexContainer will render a div with 'display: flex' and default flexbox style rules.
+By default FlexContainer will render a div with `'display: flex'` and default flexbox style rules.
 
 If you want to add additional flexbox rules to your FlexContainer you can pass in options set to true.
 
@@ -71,9 +71,7 @@ If you want to add additional flexbox rules to your FlexContainer you can pass i
 * justifyFlexEnd
 * justifyCenter
 
-If you are not familiar with the flexible box model please review the MDN docs:
-
-* [Using CSS Flexible Boxes](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes)
+If you are not familiar with the flexible box model please review the [MDN docs](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes)
 
 ## License
 MIT License
