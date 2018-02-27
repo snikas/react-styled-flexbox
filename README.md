@@ -76,7 +76,7 @@ If you are not familiar with the flexible box model please review the [MDN docs]
 ## License
 MIT License
 
-Copyright (c) 2017 Steven Akins
+Copyright (c) 2017 Raycom Media, Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
