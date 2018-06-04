@@ -1,1 +1,6 @@
 src/
+build/
+.babelrc
+.travis.yml
+index.html
+webpack.config.demo.js
