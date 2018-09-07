@@ -1,7 +1,6 @@
 import 'react';
 import styled from 'styled-components';
 import { decamelize } from 'humps';
-import _ from 'lodash';
 
 /**
  * React container component using css flexbox
@@ -28,7 +27,7 @@ import _ from 'lodash';
  */
 
 const getRule = (ruleName, defaultRule) => (props) => {
-  const foundRule = _.find(_.keys(props), key => _.startsWith(key, ruleName));
+  const foundRule = Object.keys(props).find(key => key.startsWith(ruleName));
   if (!foundRule || !props[foundRule]) {
     return defaultRule;
   }
@@ -37,7 +36,7 @@ const getRule = (ruleName, defaultRule) => (props) => {
 };
 
 const FlexContainer = styled.div`
-  display: flex;
+  display: ${props => (props.inline ? 'inline-flex' : 'flex')};
   flex-direction: ${getRule('direction', 'row')};
   flex-wrap: ${getRule('wrap', 'nowrap')};
   justify-content: ${getRule('justify', 'flex-start')};

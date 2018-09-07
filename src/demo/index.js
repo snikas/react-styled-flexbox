@@ -1,7 +1,7 @@
 import React from 'react';
-import {render} from 'react-dom';
+import { render } from 'react-dom';
+import 'styled-components';
 import FlexContainer from '../Container.jsx';
-import styled from 'styled-components';
 
 const FlexDiv = FlexContainer.extend`
   background: green;
@@ -9,32 +9,51 @@ const FlexDiv = FlexContainer.extend`
   flex-basis: 45%;
 `;
 
-class App extends React.Component {
-  render () {
-    return (
-    <FlexContainer
-      justifySpaceBetween
-      style={{
-        height: '100vh'
-      }}
-    >
-     <FlexDiv
+const App = () => (
+  <div>
+  <FlexContainer
+    justifySpaceBetween
+    style={{
+      height: '100vh',
+    }}
+  >
+    <FlexDiv
       justifyCenter
       itemsCenter
       contentCenter
-     >
+    >
       1
     </FlexDiv>
     <FlexDiv
       justifyCenter
       itemsCenter
       contentCenter
-     >
+    >
       2
     </FlexDiv>
-   </FlexContainer>
-    )
-  }
-}
+  </FlexContainer>
+  <FlexContainer
+    justifySpaceBetween
+    style={{
+      height: '100vh',
+    }}
+  >
+    <FlexDiv
+      justifyCenter
+      itemsCenter
+      contentCenter
+    >
+      1
+    </FlexDiv>
+    <FlexDiv
+      justifyCenter
+      itemsCenter
+      contentCenter
+    >
+      2
+    </FlexDiv>
+  </FlexContainer>
+  </div>
+);
 
-render(<App/>, document.getElementById('root'));
+render(<App />, document.getElementById('root'));
