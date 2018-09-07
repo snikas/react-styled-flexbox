@@ -6,6 +6,7 @@ import { decamelize } from 'humps';
  * React container component using css flexbox
  * https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes
  * VALID PROPS
+ * inline
  * directionRowReverse
  * directionColumn
  * directionColumnReverse

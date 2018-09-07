@@ -38,6 +38,10 @@ If you want to add additional flexbox rules to your FlexContainer you can pass i
 
 ## Options
 
+#### inline-flex:
+
+* inline
+
 #### flex-direction:
 
 * directionRowReverse
