@@ -7,6 +7,6 @@ export default defineConfig({
   build: { outDir: 'build' },
   test: {
     environment: 'jsdom',
-    include: ['src/**/*.test.{js,jsx}'],
+    include: ['src/**/*.test.{ts,tsx}'],
   },
 });
