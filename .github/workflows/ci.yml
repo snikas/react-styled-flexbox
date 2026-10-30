@@ -9,6 +9,7 @@ jobs:
     strategy:
       matrix:
         node: [22, 24]
+        styled-components: [5, 6]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -16,6 +17,7 @@ jobs:
           node-version: ${{ matrix.node }}
           cache: npm
       - run: npm ci
+      - run: npm install --no-save styled-components@${{ matrix.styled-components }}
       - run: npm run lint
       - run: npm test
       - run: npm run build

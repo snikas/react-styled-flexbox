@@ -8,13 +8,13 @@ Effortlessly add flexbox styles to your components using minimal code.
 
 ##### NPM
 
-`npm install react-styled-flexbox --save`
+`npm install react-styled-flexbox styled-components --save`
 
 ##### Yarn
 
-`yarn add react-styled-flexbox`
+`yarn add react-styled-flexbox styled-components`
 
-Requires React 16.14 or newer. No other dependencies.
+Peer dependencies: React 16.14 or newer and styled-components 5.1 or newer (v5 and v6 are tested). Install them alongside this package if you don't already have them.
 
 ## API
 
@@ -79,7 +79,21 @@ If you want to add additional flexbox rules to your FlexContainer you can pass i
 
 ## Styling and overrides
 
-FlexContainer renders a `div` (or the element passed as `as`, e.g. `<FlexContainer as="ul">`). Only `display` and the flexbox rules you turn on are set, as inline styles. Rules you don't set are left to the CSS defaults, so a `className` can set them, including inside media queries. Inline styles beat stylesheet rules, so a class can't override a rule you set with a prop (or `display`). Use `style` to override those. Any other prop (`className`, `id`, `onClick`, `ref`, ...) is passed through to the element.
+FlexContainer is a styled-components `div`. Pass `as` to render another element or component (for example `<FlexContainer as="ul">`). Only `display` and the flexbox rules you turn on are written to the generated CSS, so rules you don't set use the CSS defaults. Any other prop (`className`, `id`, `onClick`, `ref`, ...) is passed through to the element, and the flexbox props never reach the DOM.
+
+Extend it like any styled component:
+
+```jsx
+import styled from 'styled-components';
+import FlexContainer from 'react-styled-flexbox';
+
+const Card = styled(FlexContainer)`
+  background: green;
+  flex-basis: 45%;
+`;
+
+<Card justifyCenter itemsCenter>...</Card>
+```
 
 If you pass several props from the same group (for example `directionColumn` and `directionRowReverse`), the last one wins.
 
@@ -87,9 +101,9 @@ TypeScript types are included.
 
 ## Upgrading from 2.x
 
-* styled-components is no longer used or required. Remove it from your dependencies if this library was the only reason you had it.
-* `FlexContainer.extend` no longer exists. `styled(FlexContainer)` still passes its `className` through, but its rules lose to the inline flex rules, so pass `style` instead or wrap `FlexContainer` in your own component.
-* The flex defaults (`flex-direction: row` and so on) are no longer written inline. They behave the same, but a stylesheet can now change them.
+* styled-components 5.1 or newer is now required. 3.x and 4.x are no longer supported, because the peer range was `^3.3.2`.
+* `FlexContainer.extend` was removed in styled-components 4. Use `styled(FlexContainer)` instead.
+* The flex defaults (`flex-direction: row` and so on) are no longer written into the CSS. They behave the same, and a stylesheet or extension no longer fights them.
 
 If you are not familiar with the flexible box model please review the [MDN docs](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes)
 

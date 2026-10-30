@@ -4,7 +4,7 @@ import { defineConfig } from 'tsup';
 export default defineConfig({
   entry: ['src/index.js'],
   format: ['esm', 'cjs'],
-  external: ['react'],
+  external: ['react', 'styled-components'],
   clean: true,
   // src is plain JS, so the hand-written declarations are copied rather than generated
   onSuccess: async () => {
