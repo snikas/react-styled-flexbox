@@ -97,7 +97,7 @@ const Card = styled(FlexContainer)`
 
 If you pass several props from the same group (for example `directionColumn` and `directionRowReverse`), the last one wins.
 
-TypeScript types are included.
+The package is written in TypeScript and ships its own types. Flex props are checked (`directionSideways` is an error), and `FlexContainerProps` is exported if you need the prop type.
 
 ## Upgrading from 2.x
 

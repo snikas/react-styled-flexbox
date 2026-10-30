@@ -9,7 +9,7 @@
 
 ### Added
 - `ref` forwarding and the `as` prop (both through styled-components).
-- TypeScript type declarations.
+- Rewritten in TypeScript. Type declarations are generated from the source, and `FlexContainerProps`, `FlexContainerOwnProps` and `FlexRuleProp` are exported.
 
 ### Changed
 - Unset flex rules are no longer written into the generated CSS, so they use the CSS defaults and are no longer fighting your own classes.
