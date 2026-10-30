@@ -15,7 +15,7 @@ const Row = () => (
   </FlexContainer>
 );
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById('root') as HTMLElement).render(
   <>
     <Row />
     <Row />

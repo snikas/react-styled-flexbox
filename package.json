@@ -31,7 +31,8 @@
     "lint": "eslint .",
     "test": "vitest run",
     "test:dist": "node scripts/check-dist.mjs",
-    "prepublishOnly": "npm run lint && npm test && npm run build"
+    "prepublishOnly": "npm run typecheck && npm run lint && npm test && npm run build && npm run test:dist",
+    "typecheck": "tsc"
   },
   "repository": {
     "type": "git",
@@ -62,6 +63,7 @@
     "@testing-library/dom": "^10.4.2",
     "@testing-library/react": "^16.3.3",
     "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",
     "eslint": "^9.39.5",
     "eslint-plugin-react": "^7.37.5",
@@ -72,7 +74,8 @@
     "react-dom": "^19.3.1",
     "styled-components": "^6.6.0",
     "tsup": "^9.0.0",
-    "typescript": "^7.0.2",
+    "typescript": "~6.0",
+    "typescript-eslint": "^8.72.1",
     "vite": "^8.3.5",
     "vitest": "^5.0.5"
   }

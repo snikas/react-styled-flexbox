@@ -1,4 +1,5 @@
 import { createRef } from 'react';
+import type { ComponentProps } from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
 import styled from 'styled-components';
 import { afterEach, expect, test } from 'vitest';
@@ -6,17 +7,17 @@ import FlexContainer from './index';
 
 afterEach(cleanup);
 
-const renderContainer = (props) => {
+const renderContainer = (props?: ComponentProps<typeof FlexContainer>) => {
   render(<FlexContainer data-testid="box" {...props} />);
   return screen.getByTestId('box');
 };
 
-const css = (box) => getComputedStyle(box);
+const css = (box: HTMLElement) => getComputedStyle(box);
 
 // the CSS text styled-components generated for this element's classes
-const generatedCss = (box) => Array.from(document.styleSheets)
+const generatedCss = (box: HTMLElement) => Array.from(document.styleSheets)
   .flatMap((sheet) => Array.from(sheet.cssRules))
-  .filter((rule) => Array.from(box.classList).some((name) => rule.selectorText === `.${name}`))
+  .filter((rule) => Array.from(box.classList).some((name) => (rule as CSSStyleRule).selectorText === `.${name}`))
   .map((rule) => rule.cssText)
   .join(' ');
 
@@ -97,7 +98,18 @@ test('can be extended with styled()', () => {
 });
 
 test('forwards refs', () => {
-  const ref = createRef();
+  const ref = createRef<HTMLDivElement>();
   render(<FlexContainer ref={ref} />);
   expect(ref.current).toBeInstanceOf(HTMLDivElement);
+});
+
+test('props are typed', () => {
+  const props: ComponentProps<typeof FlexContainer> = {
+    as: 'ul', inline: true, directionColumn: true, itemsCenter: true, className: 'x', onClick: () => {},
+  };
+  // @ts-expect-error not a flexbox prop
+  const unknownRule: ComponentProps<typeof FlexContainer> = { directionSideways: true };
+  // @ts-expect-error flex props are booleans
+  const notBoolean: ComponentProps<typeof FlexContainer> = { itemsCenter: 'yes' };
+  expect([props, unknownRule, notBoolean]).toHaveLength(3);
 });
