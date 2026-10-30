@@ -1,4 +1,4 @@
-// Smoke test: the built ESM and CJS bundles must both load and export a component.
+// Smoke test: the built ESM and CJS bundles must both load in plain Node and export a styled component.
 import { createRequire } from 'node:module';
 import assert from 'node:assert/strict';
 

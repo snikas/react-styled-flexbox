@@ -3,24 +3,22 @@
 ## 3.0.0 - Unreleased
 
 ### Breaking
-- styled-components is no longer used. `FlexContainer.extend` no longer exists. `styled(FlexContainer)` still passes `className` through, but its rules lose to the inline flex rules, so use `style` or wrap the component.
-- Rules set via props (and `display`) are inline styles and can only be overridden with `style`, not with a stylesheet.
+- Requires `styled-components` 5.1 or newer (v5 and v6 are tested). The peer range was `^3.3.2`. Use `styled(FlexContainer)` to extend, since `.extend` was removed in styled-components 4.
 - CommonJS consumers must use `require('react-styled-flexbox').default`.
 - If several props from the same group are true (for example `directionColumn` and `directionRowReverse`), the last one now wins. Previously the first did.
 
 ### Added
-- `as` prop to render a different element or component.
-- `ref` forwarding.
+- `ref` forwarding and the `as` prop (both through styled-components).
 - TypeScript type declarations.
 
 ### Changed
-- Unset flex rules are no longer written inline, so classes and media queries can set them.
-- The peer dependency is now `react >=16.14`. styled-components is no longer needed.
+- Unset flex rules are no longer written into the generated CSS, so they use the CSS defaults and are no longer fighting your own classes.
+- The peer dependency on React is now `>=16.14`.
 - The package ships ESM and CJS builds through an `exports` map and is marked `sideEffects: false`.
 - Tooling: tsup, Vite, Vitest with Testing Library, ESLint 9 and GitHub Actions replace Babel, Webpack, Jest, Enzyme and Travis.
 
 ### Fixed
-- Flex props no longer leak to the DOM.
+- Flex props no longer leak to the DOM with styled-components 6.
 - Props that merely start with a flex prefix, such as `contentEditable`, are no longer swallowed.
 
 ### Removed

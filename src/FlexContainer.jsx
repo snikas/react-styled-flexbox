@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import styledImport from 'styled-components';
 
 /**
  * React container component using css flexbox
@@ -11,10 +11,14 @@ import { forwardRef } from 'react';
  * align-items: itemsFlexStart, itemsFlexEnd, itemsCenter, itemsBaseline
  * align-content: contentFlexStart, contentFlexEnd, contentCenter, contentSpaceBetween, contentSpaceAround
  * inline: renders display: inline-flex
- * as: element or component to render instead of a div
+ * as: element or component to render instead of a div (provided by styled-components)
  *
- * Unset rules are left to the CSS defaults. If several props from the same group are true, the last one wins.
+ * Unset rules are left out of the generated CSS, so they use the CSS defaults.
+ * If several props from the same group are true, the last one wins.
  */
+
+// Native Node ESM loads styled-components' CJS build, where the default import is the module object
+const styled = styledImport.default || styledImport;
 
 const RULES = {
   direction: { property: 'flexDirection', values: ['row-reverse', 'column', 'column-reverse'] },
@@ -24,35 +28,29 @@ const RULES = {
   content: { property: 'alignContent', values: ['flex-start', 'flex-end', 'center', 'space-between', 'space-around'] },
 };
 
+const toKebab = (name) => name.replace(/[A-Z]/g, (char) => `-${char.toLowerCase()}`);
 const toCamel = (value) => value.replace(/-(\w)/g, (_, char) => char.toUpperCase());
 const upperFirst = (value) => value.charAt(0).toUpperCase() + value.slice(1);
 
-// propName (e.g. "itemsFlexEnd") -> { property: "alignItems", value: "flex-end" }
+// propName (e.g. "itemsFlexEnd") -> { property: "align-items", value: "flex-end" }
 const PROP_LOOKUP = {};
 Object.keys(RULES).forEach((name) => {
   RULES[name].values.forEach((value) => {
-    PROP_LOOKUP[name + upperFirst(toCamel(value))] = { property: RULES[name].property, value };
+    PROP_LOOKUP[name + upperFirst(toCamel(value))] = { property: toKebab(RULES[name].property), value };
   });
 });
 
-const FlexContainer = forwardRef(function FlexContainer({
-  as: Component = 'div', inline, style, ...props
-}, ref) {
-  // properties left unset fall back to the CSS defaults, so classes and media queries can set them
-  const flexStyle = { display: inline ? 'inline-flex' : 'flex' };
-  const domProps = {};
+const flexRules = (props) => Object.keys(props)
+  .filter((key) => PROP_LOOKUP[key] && props[key])
+  .map((key) => `${PROP_LOOKUP[key].property}: ${PROP_LOOKUP[key].value};`)
+  .join('\n');
 
-  Object.keys(props).forEach((key) => {
-    const rule = PROP_LOOKUP[key];
-    if (!rule) {
-      domProps[key] = props[key];
-    } else if (props[key]) {
-      // flexbox props are consumed here and never reach the DOM
-      flexStyle[rule.property] = rule.value;
-    }
-  });
-
-  return <Component ref={ref} {...domProps} style={{ ...flexStyle, ...style }} />;
-});
+const FlexContainer = styled.div.withConfig({
+  // flexbox props are consumed here and never reach the DOM
+  shouldForwardProp: (prop) => prop !== 'inline' && !PROP_LOOKUP[prop],
+})`
+  display: ${(props) => (props.inline ? 'inline-flex' : 'flex')};
+  ${flexRules}
+`;
 
 export default FlexContainer;

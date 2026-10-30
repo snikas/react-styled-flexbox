@@ -1,7 +1,7 @@
 {
   "name": "react-styled-flexbox",
   "version": "3.0.0",
-  "description": "A Flexbox React component configured with simple boolean props",
+  "description": "A Flexbox React component harnessing the power of styled-components",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -41,7 +41,8 @@
     "reactjs",
     "react-component",
     "flex",
-    "flexbox"
+    "flexbox",
+    "styled-components"
   ],
   "author": {
     "name": "Steven Akins"
@@ -52,7 +53,8 @@
   },
   "homepage": "https://github.com/snikas/react-styled-flexbox#readme",
   "peerDependencies": {
-    "react": ">=16.14"
+    "react": ">=16.14",
+    "styled-components": ">=5.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.5",
@@ -67,6 +69,7 @@
     "jsdom": "^30.1.3",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
+    "styled-components": "^6.6.0",
     "tsup": "^9.0.0",
     "typescript": "^7.0.2",
     "vite": "^8.3.5",
